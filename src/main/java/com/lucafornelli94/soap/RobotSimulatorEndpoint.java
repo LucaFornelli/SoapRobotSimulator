@@ -7,6 +7,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.lucafornelli94.bean.Robot;
+import com.lucafornelli94.bean.Robot.Cardinal;
 import com.lucafornelli94.robot.GetRobotPositionResponse;
 import com.lucafornelli94.robot.InitializeRobotPositionRequest;
 import com.lucafornelli94.robot.InitializeRobotPositionResponse;
@@ -52,8 +53,19 @@ public class RobotSimulatorEndpoint {
 		robotInfos.setYPosition(robot.getYPosition());
 		robotInfos.setWidth(robot.getWidth());
 		robotInfos.setHeight(robot.getHeight());
-		robotInfos.setFacing(robot.getFacing());
+		robotInfos.setFacing(mapCardinal(robot.getFacing()));
 		
 		return robotInfos;
+	}
+	
+	private com.lucafornelli94.robot.Cardinal mapCardinal(Cardinal cardinal) {
+		if (cardinal == Cardinal.SOUTH)
+			return com.lucafornelli94.robot.Cardinal.SOUTH;
+		else if (cardinal == Cardinal.EAST)
+			return com.lucafornelli94.robot.Cardinal.EAST;
+		else if (cardinal == Cardinal.WEST)
+			return com.lucafornelli94.robot.Cardinal.WEST;
+		else
+			return com.lucafornelli94.robot.Cardinal.NORTH;
 	}
 }

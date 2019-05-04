@@ -2,7 +2,7 @@
 // Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.7 
 // Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.05.04 alle 06:30:39 PM CEST 
+// Generato il: 2019.05.04 alle 06:55:41 PM CEST 
 //
 
 
@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="yPosition" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="width" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="height" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="facing" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="facing" type="{http://lucafornelli94.com/robot}Cardinal"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -52,7 +52,7 @@ public class RobotInfo {
     protected int width;
     protected int height;
     @XmlElement(required = true)
-    protected String facing;
+    protected Cardinal facing;
 
     /**
      * Recupera il valore della proprietà xPosition.
@@ -123,10 +123,10 @@ public class RobotInfo {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Cardinal }
      *     
      */
-    public String getFacing() {
+    public Cardinal getFacing() {
         return facing;
     }
 
@@ -135,10 +135,10 @@ public class RobotInfo {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Cardinal }
      *     
      */
-    public void setFacing(String value) {
+    public void setFacing(Cardinal value) {
         this.facing = value;
     }
 

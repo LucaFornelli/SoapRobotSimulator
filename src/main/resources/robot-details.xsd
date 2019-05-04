@@ -37,7 +37,15 @@
 			<xs:element name="yPosition" type="xs:int" />
 			<xs:element name="width" type="xs:int" />
 			<xs:element name="height" type="xs:int" />
-			<xs:element name="facing" type="xs:string" />
+			<xs:element name="facing" type="tns:Cardinal" />
 		</xs:sequence>
 	</xs:complexType>
+	<xs:simpleType name="Cardinal">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NORTH"/>
+			<xs:enumeration value="SOUTH"/>
+			<xs:enumeration value="WEST"/>
+			<xs:enumeration value="EAST"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>

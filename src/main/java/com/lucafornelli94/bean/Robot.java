@@ -2,13 +2,17 @@ package com.lucafornelli94.bean;
 
 public class Robot {
 	
+	public enum Cardinal {
+		NORTH, SOUTH, EAST, WEST;
+	}
+	
 	private int xPosition;
 	private int yPosition;
 	private int width;
 	private int height;
-	private String facing;
+	private Cardinal facing;
 
-	public Robot(int xPosition, int yPosition, int width, int height, String facing) {
+	public Robot(int xPosition, int yPosition, int width, int height, Cardinal facing) {
 		super();
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
@@ -17,11 +21,11 @@ public class Robot {
 		this.facing = facing;
 	}
 
-	public String getFacing() {
+	public Cardinal getFacing() {
 		return facing;
 	}
 
-	public void setFacing(String facing) {
+	public void setFacing(Cardinal facing) {
 		this.facing = facing;
 	}
 
