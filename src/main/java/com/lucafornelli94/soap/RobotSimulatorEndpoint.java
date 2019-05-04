@@ -11,6 +11,8 @@ import com.lucafornelli94.bean.Robot.Cardinal;
 import com.lucafornelli94.robot.GetRobotPositionResponse;
 import com.lucafornelli94.robot.InitializeRobotPositionRequest;
 import com.lucafornelli94.robot.InitializeRobotPositionResponse;
+import com.lucafornelli94.robot.MoveRequest;
+import com.lucafornelli94.robot.MoveResponse;
 import com.lucafornelli94.robot.RobotInfo;
 import com.lucafornelli94.robot.TurnLeftRequest;
 import com.lucafornelli94.robot.TurnLeftResponse;
@@ -94,4 +96,16 @@ public class RobotSimulatorEndpoint {
 		
 		return response;
 	}
+
+	@PayloadRoot(namespace = "http://lucafornelli94.com/robot", localPart = "MoveRequest")
+	@ResponsePayload
+	public MoveResponse processMoveRequest(@RequestPayload MoveRequest request) {
+		MoveResponse response = new MoveResponse();
+		
+		Robot robot = service.move();
+		response.setRobotInfo(mapRobotInfo(robot));
+		
+		return response;
+	}
+	
 }

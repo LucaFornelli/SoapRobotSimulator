@@ -62,6 +62,20 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- Move service -->
+	<xs:element name="MoveRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="MoveResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RobotInfo" type="tns:RobotInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
 	<!-- Data Types -->
 	<xs:complexType name="RobotInfo">
 		<xs:sequence>

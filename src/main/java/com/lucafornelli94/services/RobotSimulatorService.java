@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 import com.lucafornelli94.bean.Robot;
 import com.lucafornelli94.bean.Robot.Cardinal;
+import com.lucafornelli94.exception.OutOfBorderException;
+import com.lucafornelli94.helper.UtilityHelper;
 import com.lucafornelli94.robot.RobotInfo;
 
 @Component
@@ -15,8 +17,8 @@ public class RobotSimulatorService {
 	private static final int DEFAULT_WIDTH = 0;
 	private static final int DEFAULT_HEIGHT = 0;
 	private static final Cardinal DEFUALT_FACING = Cardinal.NORTH;
-	private static final String LEFT = "left";
-	private static final String RIGHT = "right";
+	public static final String LEFT = "left";
+	public static final String RIGHT = "right";
 	
 
 	static {
@@ -30,50 +32,46 @@ public class RobotSimulatorService {
 
 	public Robot initializeRobotPosition(RobotInfo robotInfo) {
 		
+		if(robotInfo.getXPosition() > robotInfo.getWidth() || robotInfo.getYPosition() > robotInfo.getHeight())
+			throw new OutOfBorderException("Choose a right position for the robot");
 		robot.setXPosition((robotInfo.getXPosition()>0)?robotInfo.getXPosition():DEFAULT_X_POSITION);
 		robot.setYPosition((robotInfo.getYPosition()>0)?robotInfo.getYPosition():DEFAULT_Y_POSITION);
 		robot.setWidth((robotInfo.getWidth()>0)?robotInfo.getWidth():DEFAULT_WIDTH);
 		robot.setHeight((robotInfo.getHeight()>0)?robotInfo.getHeight():DEFAULT_HEIGHT);
-		robot.setFacing((robotInfo.getFacing()!=null)?mapCardinal(robotInfo.getFacing()):DEFUALT_FACING);
+		robot.setFacing((robotInfo.getFacing()!=null)?UtilityHelper.mapCardinal(robotInfo.getFacing()):DEFUALT_FACING);
 		return robot;
-	}
-
-	private Cardinal mapCardinal(com.lucafornelli94.robot.Cardinal cardinal) {
-		if (cardinal == com.lucafornelli94.robot.Cardinal.SOUTH)
-			return Cardinal.SOUTH;
-		else if (cardinal == com.lucafornelli94.robot.Cardinal.EAST)
-			return Cardinal.EAST;
-		else if (cardinal == com.lucafornelli94.robot.Cardinal.WEST)
-			return Cardinal.WEST;
-		else
-			return Cardinal.NORTH;
 	}
 	
 	public Robot turn(String value) {
+		robot.setFacing(UtilityHelper.TurnValue(robot, value));
+		return robot;
+	}
+	
+	public Robot move() {
 		switch(robot.getFacing()) {
 		case NORTH:
-			if (value.equals(LEFT))
-				robot.setFacing(Cardinal.WEST);
-			else if (value.equals(RIGHT))
-				robot.setFacing(Cardinal.EAST);
+			if (robot.getYPosition()+1 < robot.getHeight())
+				robot.setYPosition(robot.getYPosition()+1);
+			else
+				throw new OutOfBorderException("Movement not allowed");
 			break;
 		case SOUTH:
-			if (value.equals(LEFT))
-				robot.setFacing(Cardinal.EAST);
-			else if (value.equals(RIGHT))
-				robot.setFacing(Cardinal.WEST);
+			if (robot.getYPosition()-1 >= 0)
+				robot.setYPosition(robot.getYPosition()-1);
+			else
+				throw new OutOfBorderException("Movement not allowed");
 			break;
 		case EAST:
-			if (value.equals(LEFT))
-				robot.setFacing(Cardinal.NORTH);
-			else if (value.equals(RIGHT))
-				robot.setFacing(Cardinal.SOUTH);
+			if (robot.getXPosition()+1 < robot.getWidth())
+				robot.setXPosition(robot.getXPosition()+1);
+			else
+				throw new OutOfBorderException("Movement not allowed");
 			break;
 		case WEST:
-			if (value.equals(LEFT))
-				robot.setFacing(Cardinal.SOUTH);
-			else if (value.equals(RIGHT))
-				robot.setFacing(Cardinal.NORTH);
+			if (robot.getXPosition()-1 >= 0)
+				robot.setXPosition(robot.getXPosition()-1);
+			else
+				throw new OutOfBorderException("Movement not allowed");
 			break;
 		}
 		return robot;

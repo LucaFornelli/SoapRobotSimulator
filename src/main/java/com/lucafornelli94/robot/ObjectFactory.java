@@ -2,7 +2,7 @@
 // Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.7 
 // Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.05.04 alle 08:40:45 PM CEST 
+// Generato il: 2019.05.04 alle 08:47:56 PM CEST 
 //
 
 
@@ -37,6 +37,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MoveResponse }
+     * 
+     */
+    public MoveResponse createMoveResponse() {
+        return new MoveResponse();
+    }
+
+    /**
+     * Create an instance of {@link RobotInfo }
+     * 
+     */
+    public RobotInfo createRobotInfo() {
+        return new RobotInfo();
+    }
+
+    /**
      * Create an instance of {@link TurnRightRequest }
      * 
      */
@@ -53,11 +69,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RobotInfo }
+     * Create an instance of {@link MoveRequest }
      * 
      */
-    public RobotInfo createRobotInfo() {
-        return new RobotInfo();
+    public MoveRequest createMoveRequest() {
+        return new MoveRequest();
     }
 
     /**

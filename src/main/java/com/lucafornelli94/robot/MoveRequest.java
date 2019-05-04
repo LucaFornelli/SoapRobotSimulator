@@ -32,8 +32,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "TurnRightRequest")
-public class TurnRightRequest {
+@XmlRootElement(name = "MoveRequest")
+public class MoveRequest {
 
 
 }
