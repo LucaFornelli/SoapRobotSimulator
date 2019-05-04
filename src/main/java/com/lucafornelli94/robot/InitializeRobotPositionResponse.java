@@ -10,7 +10,6 @@ package com.lucafornelli94.robot;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="RobotInfo" type="{http://lucafornelli94.com/robot}RobotInfo"/>
+ *         &lt;element name="result" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +35,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "robotInfo"
+    "result"
 })
-@XmlRootElement(name = "GetRobotPositionResponse")
-public class GetRobotPositionResponse {
+@XmlRootElement(name = "InitializeRobotPositionResponse")
+public class InitializeRobotPositionResponse {
 
-    @XmlElement(name = "RobotInfo", required = true)
-    protected RobotInfo robotInfo;
+    protected int result;
 
     /**
-     * Recupera il valore della proprietà robotInfo.
+     * Recupera il valore della proprietà result.
      * 
-     * @return
-     *     possible object is
-     *     {@link RobotInfo }
-     *     
      */
-    public RobotInfo getRobotInfo() {
-        return robotInfo;
+    public int getResult() {
+        return result;
     }
 
     /**
-     * Imposta il valore della proprietà robotInfo.
+     * Imposta il valore della proprietà result.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link RobotInfo }
-     *     
      */
-    public void setRobotInfo(RobotInfo value) {
-        this.robotInfo = value;
+    public void setResult(int value) {
+        this.result = value;
     }
 
 }

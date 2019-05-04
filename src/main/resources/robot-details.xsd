@@ -1,25 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	targetNamespace="http://lucafornelli94.com/robot"
 	xmlns:tns="http://lucafornelli94.com/robot"
 	elementFormDefault="qualified">
-	<element name="GetRobotPositionRequest"/>
+	<!-- GetRobotPosition Method -->
+	<xs:element name="GetRobotPositionRequest"/>
 
-	<element name="GetRobotPositionResponse">
-		<complexType>
-			<sequence>
-				<element name="RobotInfo" type="tns:RobotInfo"></element>
-			</sequence>
-		</complexType>
-	</element>
-
-	<complexType name="RobotInfo">
-		<sequence>
-			<element name="xPosition" type="int" />
-			<element name="yPosition" type="int" />
-			<element name="width" type="int" />
-			<element name="height" type="int" />
-			<element name="facing" type="string" />
-		</sequence>
-	</complexType>
-</schema>
+	<xs:element name="GetRobotPositionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RobotInfo" type="tns:RobotInfo"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- InitializeRobotPosition Method -->
+	<xs:element name="InitializeRobotPositionRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RobotInfo" type="tns:RobotInfo"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="InitializeRobotPositionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="RobotInfo">
+		<xs:sequence>
+			<xs:element name="xPosition" type="xs:int" />
+			<xs:element name="yPosition" type="xs:int" />
+			<xs:element name="width" type="xs:int" />
+			<xs:element name="height" type="xs:int" />
+			<xs:element name="facing" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
