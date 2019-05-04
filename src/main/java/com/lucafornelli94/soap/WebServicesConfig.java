@@ -14,6 +14,8 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 @Configuration
 public class WebServicesConfig {
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext context) {
 		MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
@@ -21,9 +23,7 @@ public class WebServicesConfig {
 		messageDispatcherServlet.setTransformWsdlLocations(true);
 		return new ServletRegistrationBean(messageDispatcherServlet, "/RobotSimulator/*");
 	}
-
-	// /ws/courses.wsdl
-	// course-details.xsd
+	
 	@Bean(name = "robot")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema coursesSchema) {
 		DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
@@ -33,7 +33,7 @@ public class WebServicesConfig {
 		definition.setSchema(coursesSchema);
 		return definition;
 	}
-
+	
 	@Bean
 	public XsdSchema coursesSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("robot-details.xsd"));

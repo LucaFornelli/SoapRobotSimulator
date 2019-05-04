@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "robotInfo"
 })
-@XmlRootElement(name = "InitializeRobotPositionRequest")
-public class InitializeRobotPositionRequest {
+@XmlRootElement(name = "TurnRightResponse")
+public class TurnRightResponse {
 
     @XmlElement(name = "RobotInfo", required = true)
     protected RobotInfo robotInfo;

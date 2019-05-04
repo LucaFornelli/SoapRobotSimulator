@@ -3,34 +3,66 @@
 	targetNamespace="http://lucafornelli94.com/robot"
 	xmlns:tns="http://lucafornelli94.com/robot"
 	elementFormDefault="qualified">
-	<!-- GetRobotPosition Method -->
-	<xs:element name="GetRobotPositionRequest"/>
+	<!-- GetRobotPosition servjce -->
+	<xs:element name="GetRobotPositionRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
 
 	<xs:element name="GetRobotPositionResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="RobotInfo" type="tns:RobotInfo"/>
+				<xs:element name="RobotInfo" type="tns:RobotInfo" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
-	<!-- InitializeRobotPosition Method -->
+
+	<!-- InitializeRobotPosition service -->
 	<xs:element name="InitializeRobotPositionRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="RobotInfo" type="tns:RobotInfo"/>
+				<xs:element name="RobotInfo" type="tns:RobotInfo" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:element name="InitializeRobotPositionResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="result" type="xs:int"/>
+				<xs:element name="RobotInfo" type="tns:RobotInfo" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
+	<!-- TurnLeft service -->
+	<xs:element name="TurnLeftRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="TurnLeftResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RobotInfo" type="tns:RobotInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- TurnRight service -->
+	<xs:element name="TurnRightRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="TurnRightResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RobotInfo" type="tns:RobotInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Data Types -->
 	<xs:complexType name="RobotInfo">
 		<xs:sequence>
 			<xs:element name="xPosition" type="xs:int" />
@@ -42,10 +74,10 @@
 	</xs:complexType>
 	<xs:simpleType name="Cardinal">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="NORTH"/>
-			<xs:enumeration value="SOUTH"/>
-			<xs:enumeration value="WEST"/>
-			<xs:enumeration value="EAST"/>
+			<xs:enumeration value="NORTH" />
+			<xs:enumeration value="SOUTH" />
+			<xs:enumeration value="WEST" />
+			<xs:enumeration value="EAST" />
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

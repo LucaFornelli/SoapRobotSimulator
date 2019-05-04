@@ -12,6 +12,10 @@ import com.lucafornelli94.robot.GetRobotPositionResponse;
 import com.lucafornelli94.robot.InitializeRobotPositionRequest;
 import com.lucafornelli94.robot.InitializeRobotPositionResponse;
 import com.lucafornelli94.robot.RobotInfo;
+import com.lucafornelli94.robot.TurnLeftRequest;
+import com.lucafornelli94.robot.TurnLeftResponse;
+import com.lucafornelli94.robot.TurnRightRequest;
+import com.lucafornelli94.robot.TurnRightResponse;
 import com.lucafornelli94.services.RobotSimulatorService;
 
 @Endpoint
@@ -38,10 +42,10 @@ public class RobotSimulatorEndpoint {
 	public InitializeRobotPositionResponse processInitializeRobotPositionRequest(@RequestPayload InitializeRobotPositionRequest request) {
 		InitializeRobotPositionResponse response = new InitializeRobotPositionResponse();
 		
-		int result = service.initializeRobotPosition(
+		Robot robot = service.initializeRobotPosition(
 			request.getRobotInfo()
 		);
-		response.setResult(result);
+		response.setRobotInfo(mapRobotInfo(robot));
 		
 		return response;
 	}
@@ -67,5 +71,27 @@ public class RobotSimulatorEndpoint {
 			return com.lucafornelli94.robot.Cardinal.WEST;
 		else
 			return com.lucafornelli94.robot.Cardinal.NORTH;
+	}
+	
+	@PayloadRoot(namespace = "http://lucafornelli94.com/robot", localPart = "TurnLeftRequest")
+	@ResponsePayload
+	public TurnLeftResponse processTurnLeftRequest(@RequestPayload TurnLeftRequest request) {
+		TurnLeftResponse response = new TurnLeftResponse();
+		
+		Robot robot = service.turn("left");
+		response.setRobotInfo(mapRobotInfo(robot));
+		
+		return response;
+	}
+	
+	@PayloadRoot(namespace = "http://lucafornelli94.com/robot", localPart = "TurnRightRequest")
+	@ResponsePayload
+	public TurnRightResponse processTurnRightRequest(@RequestPayload TurnRightRequest request) {
+		TurnRightResponse response = new TurnRightResponse();
+		
+		Robot robot = service.turn("right");
+		response.setRobotInfo(mapRobotInfo(robot));
+		
+		return response;
 	}
 }
