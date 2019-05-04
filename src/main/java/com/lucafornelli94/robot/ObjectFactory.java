@@ -2,13 +2,16 @@
 // Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.7 
 // Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.05.04 alle 05:20:18 PM CEST 
+// Generato il: 2019.05.04 alle 06:13:07 PM CEST 
 //
 
 
 package com.lucafornelli94.robot;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -28,6 +31,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GetRobotPositionRequest_QNAME = new QName("http://lucafornelli94.com/robot", "GetRobotPositionRequest");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.lucafornelli94.robot
@@ -53,11 +57,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetRobotPositionRequest }
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
      * 
      */
-    public GetRobotPositionRequest createGetRobotPositionRequest() {
-        return new GetRobotPositionRequest();
+    @XmlElementDecl(namespace = "http://lucafornelli94.com/robot", name = "GetRobotPositionRequest")
+    public JAXBElement<Object> createGetRobotPositionRequest(Object value) {
+        return new JAXBElement<Object>(_GetRobotPositionRequest_QNAME, Object.class, null, value);
     }
 
 }

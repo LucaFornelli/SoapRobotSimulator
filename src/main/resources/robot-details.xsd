@@ -3,13 +3,7 @@
 	targetNamespace="http://lucafornelli94.com/robot"
 	xmlns:tns="http://lucafornelli94.com/robot"
 	elementFormDefault="qualified">
-	<element name="GetRobotPositionRequest">
-		<complexType>
-			<sequence>
-				<element name="id" type="int"></element>
-			</sequence>
-		</complexType>
-	</element>
+	<element name="GetRobotPositionRequest"/>
 
 	<element name="GetRobotPositionResponse">
 		<complexType>
@@ -21,7 +15,6 @@
 
 	<complexType name="RobotInfo">
 		<sequence>
-			<element name="id" type="int" />
 			<element name="xPosition" type="int" />
 			<element name="yPosition" type="int" />
 			<element name="width" type="int" />
@@ -30,6 +23,3 @@
 		</sequence>
 	</complexType>
 </schema>
-
-<!-- <GetCourseDetailsRequest xmlns="http://in28minutes.com/courses"> <id>123</id> 
-	</GetCourseDetailsRequest> -->

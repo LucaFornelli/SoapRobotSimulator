@@ -2,7 +2,7 @@
 // Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.7 
 // Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.05.04 alle 05:20:18 PM CEST 
+// Generato il: 2019.05.04 alle 06:13:07 PM CEST 
 //
 
 
@@ -24,7 +24,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="xPosition" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="yPosition" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="width" type="{http://www.w3.org/2001/XMLSchema}int"/>
@@ -40,7 +39,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RobotInfo", propOrder = {
-    "id",
     "xPosition",
     "yPosition",
     "width",
@@ -49,29 +47,12 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RobotInfo {
 
-    protected int id;
     protected int xPosition;
     protected int yPosition;
     protected int width;
     protected int height;
     @XmlElement(required = true)
     protected String facing;
-
-    /**
-     * Recupera il valore della proprietà id.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Imposta il valore della proprietà id.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
 
     /**
      * Recupera il valore della proprietà xPosition.

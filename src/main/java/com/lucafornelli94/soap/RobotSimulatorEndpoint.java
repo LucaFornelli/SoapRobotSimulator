@@ -1,30 +1,43 @@
 package com.lucafornelli94.soap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
-import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.lucafornelli94.robot.GetRobotPositionRequest;
+import com.lucafornelli94.bean.Robot;
 import com.lucafornelli94.robot.GetRobotPositionResponse;
 import com.lucafornelli94.robot.RobotInfo;
+import com.lucafornelli94.services.RobotInfoService;
 
 @Endpoint
 public class RobotSimulatorEndpoint {
+	
+	@Autowired
+	RobotInfoService service;
+	
 	@PayloadRoot(namespace = "http://lucafornelli94.com/robot", localPart = "GetRobotPositionRequest")
 	@ResponsePayload
-	public GetRobotPositionResponse processCourseDetailsRequest(@RequestPayload GetRobotPositionRequest request) {
+	public GetRobotPositionResponse processCourseDetailsRequest() {
 		GetRobotPositionResponse response = new GetRobotPositionResponse();
 		
-		RobotInfo robotInfos = new RobotInfo();
-		robotInfos.setId(request.getId());
-		robotInfos.setXPosition(0);
-		robotInfos.setYPosition(3);
-		robotInfos.setWidth(4);
-		robotInfos.setHeight(4);
-		robotInfos.setFacing("NORTH");
+		Robot robot = service.findRobotInfos();
+		
+		RobotInfo robotInfos = mapRobotInfo(robot);
 		response.setRobotInfo(robotInfos);
 		
 		return response;
+	}
+
+	private RobotInfo mapRobotInfo(Robot robot) {
+		
+		RobotInfo robotInfos = new RobotInfo();
+		robotInfos.setXPosition(robot.getXPosition());
+		robotInfos.setYPosition(robot.getYPosition());
+		robotInfos.setWidth(robot.getWidth());
+		robotInfos.setHeight(robot.getHeight());
+		robotInfos.setFacing(robot.getFacing());
+		
+		return robotInfos;
 	}
 }
