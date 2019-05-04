@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://lucafornelli94.com/robot"
+	xmlns:tns="http://lucafornelli94.com/robot"
+	elementFormDefault="qualified">
+	<element name="GetRobotPositionRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="int"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="GetRobotPositionResponse">
+		<complexType>
+			<sequence>
+				<element name="RobotInfo" type="tns:RobotInfo"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="RobotInfo">
+		<sequence>
+			<element name="id" type="int" />
+			<element name="xPosition" type="int" />
+			<element name="yPosition" type="int" />
+			<element name="width" type="int" />
+			<element name="height" type="int" />
+			<element name="facing" type="string" />
+		</sequence>
+	</complexType>
+</schema>
+
+<!-- <GetCourseDetailsRequest xmlns="http://in28minutes.com/courses"> <id>123</id> 
+	</GetCourseDetailsRequest> -->
